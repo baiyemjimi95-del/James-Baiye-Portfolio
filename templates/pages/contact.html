@@ -1,0 +1,21 @@
+﻿{% extends "layouts/base.html" %}
+
+{% block title %}Contact - James Baiye{% endblock %}
+
+{% block content %}
+<section style="padding:80px 0;">
+    <div class="container">
+        <h1 class="section-title">Contact <span class="highlight">Me</span></h1>
+        <p class="section-subtitle">Let's build something amazing together</p>
+        <div style="max-width:600px; margin:0 auto;">
+            <form style="display:flex; flex-direction:column; gap:20px;">
+                <input type="text" placeholder="Your Name" style="padding:12px 16px; border:1px solid var(--border); border-radius:8px; font-size:1rem;">
+                <input type="email" placeholder="Your Email" style="padding:12px 16px; border:1px solid var(--border); border-radius:8px; font-size:1rem;">
+                <input type="text" placeholder="Subject" style="padding:12px 16px; border:1px solid var(--border); border-radius:8px; font-size:1rem;">
+                <textarea rows="5" placeholder="Your Message" style="padding:12px 16px; border:1px solid var(--border); border-radius:8px; font-size:1rem; resize:vertical;"></textarea>
+                <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

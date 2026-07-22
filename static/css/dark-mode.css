@@ -1,0 +1,84 @@
+/* ============================================================
+   dark-mode.css - Dark Theme Styles
+   ============================================================ */
+
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #1e293b;
+    --bg-card-hover: #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border-color: #334155;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Header in dark mode */
+[data-theme="dark"] .header {
+    background: rgba(15, 23, 42, 0.9);
+    border-bottom-color: #334155;
+}
+
+/* Service cards in dark mode */
+[data-theme="dark"] .service-card {
+    background: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .service-card:hover {
+    background: var(--bg-card-hover);
+}
+
+/* Portfolio items in dark mode */
+[data-theme="dark"] .portfolio-item {
+    background: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .portfolio-item:hover {
+    background: var(--bg-card-hover);
+}
+
+/* Testimonial cards in dark mode */
+[data-theme="dark"] .testimonial-card {
+    background: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+/* Contact form in dark mode */
+[data-theme="dark"] .contact-form input,
+[data-theme="dark"] .contact-form textarea,
+[data-theme="dark"] .contact-form select {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+/* Footer in dark mode */
+[data-theme="dark"] .footer {
+    background: var(--bg-secondary);
+    border-top-color: var(--border-color);
+}
+
+/* Skill bars in dark mode */
+[data-theme="dark"] .skill-bar {
+    background: var(--bg-secondary);
+}
+
+/* Stats section in dark mode */
+[data-theme="dark"] .stats {
+    background: var(--bg-secondary);
+}
+
+/* Buttons in dark mode */
+[data-theme="dark"] .btn-secondary {
+    border-color: rgba(255, 255, 255, 0.15);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+    background: rgba(37, 99, 235, 0.15);
+    border-color: var(--accent-blue);
+}

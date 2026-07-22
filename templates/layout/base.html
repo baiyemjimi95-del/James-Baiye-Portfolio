@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}James Baiye - Software Developer{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="app-container">
+        <!-- ===== LEFT SIDEBAR ===== -->
+        <aside class="sidebar" id="sidebar">
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="{{ url_for('static', filename='images/profile/profile.jpg') }}" alt="James Baiye">
+                    <div class="online-status"></div>
+                </div>
+                <h2 class="profile-name">James Baiye</h2>
+                <p class="profile-title">Software Developer | AI Enthusiast</p>
+                
+                <div class="social-icons">
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+                
+                <div class="tech-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Power BI</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="/about" class="nav-link {% if request.path == '/about' %}active{% endif %}">
+                    <i class="fas fa-user"></i> About
+                </a>
+                <a href="/portfolio" class="nav-link {% if request.path == '/portfolio' %}active{% endif %}">
+                    <i class="fas fa-briefcase"></i> Portfolio
+                </a>
+                <a href="/services" class="nav-link {% if request.path == '/services' %}active{% endif %}">
+                    <i class="fas fa-cogs"></i> Services
+                </a>
+                <a href="/blog" class="nav-link {% if request.path == '/blog' %}active{% endif %}">
+                    <i class="fas fa-newspaper"></i> Blog
+                </a>
+                <a href="/contact" class="nav-link {% if request.path == '/contact' %}active{% endif %}">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>© 2026 James Baiye</p>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <main class="main-content">
+            <!-- Blob Center -->
+            <div class="blob-center"></div>
+            
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- ===== RIGHT SIDEBAR ===== -->
+        <aside class="right-sidebar">
+            <h3>Technologies I work with</h3>
+            <div class="right-tech-tags">
+                <span class="tag">Python</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">React</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">SQL</span>
+                <span class="tag">AWS</span>
+                <span class="tag">Azure</span>
+            </div>
+
+            <h3>What I offer</h3>
+            <div class="offer-list">
+                <div class="offer-item">
+                    <h4>Web Development</h4>
+                    <p>Frontend • Backend • Full Stack</p>
+                </div>
+                <div class="offer-item">
+                    <h4>Data Analysis</h4>
+                    <p>Data Science • Analytics • BI</p>
+                </div>
+                <div class="offer-item">
+                    <h4>AI & Machine Learning</h4>
+                    <p>Predictive Models • Automation</p>
+                </div>
+            </div>
+
+            <div class="stats-mini">
+                <div class="stat-mini">
+                    <span class="number">50K+</span>
+                    <span class="label">Lines of Code</span>
+                </div>
+                <div class="stat-mini">
+                    <span class="number">100%</span>
+                    <span class="label">Client Satisfaction</span>
+                </div>
+                <div class="stat-mini">
+                    <span class="number">24/7</span>
+                    <span class="label">Support</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Mobile Hamburger Menu Button -->
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <style>
+        /* Mobile Hamburger Button */
+        .hamburger-btn {
+            display: none;
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--blue-gradient);
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 0;
+        }
+        .hamburger-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        .hamburger-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 992px) {
+            .hamburger-btn {
+                display: flex;
+            }
+        }
+    </style>
+
+    <script>
+        // Dark mode toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme');
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            const icon = document.querySelector('.theme-toggle i');
+            if (newTheme === 'dark') {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const icon = document.querySelector('.theme-toggle i');
+            if (savedTheme === 'dark') {
+                icon.className = 'fas fa-sun';
+            }
+        }
+
+        // Mobile Hamburger Menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const sidebar = document.getElementById('sidebar');
+
+            if (hamburgerBtn && sidebar) {
+                hamburgerBtn.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    sidebar.classList.toggle('open');
+                });
+
+                // Close sidebar when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 992) {
+                        if (!sidebar.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                            sidebar.classList.remove('open');
+                            hamburgerBtn.classList.remove('active');
+                        }
+                    }
+                });
+
+                // Close sidebar when window resizes to desktop
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 992) {
+                        sidebar.classList.remove('open');
+                        hamburgerBtn.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/typing.js') }}"></script>
+</body>
+</html>

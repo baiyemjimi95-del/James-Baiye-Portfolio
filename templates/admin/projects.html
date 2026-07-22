@@ -1,0 +1,28 @@
+﻿{% extends "admin/layout.html" %}
+
+{% block page_title %}Projects{% endblock %}
+
+{% block content %}
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+    <h2 style="margin:0;">Manage Projects</h2>
+    <a href="/admin/projects/add" class="btn"><i class="fas fa-plus"></i> Add Project</a>
+</div>
+<div class="card">
+    <table class="table">
+        <thead><tr><th>Title</th><th>Technologies</th><th>Featured</th><th style="text-align:right;">Actions</th></tr></thead>
+        <tbody>
+            {% for p in projects %}
+            <tr>
+                <td><strong>{{ p.title }}</strong></td>
+                <td>{{ p.technologies[:50] if p.technologies else '-' }}</td>
+                <td>{% if p.is_featured %}⭐{% else %}-{% endif %}</td>
+                <td style="text-align:right;">
+                    <a href="/admin/projects/edit/{{ p.id }}" class="btn btn-outline" style="padding:4px 12px; font-size:0.8rem;">Edit</a>
+                    <a href="/admin/projects/delete/{{ p.id }}" class="btn btn-danger" style="padding:4px 12px; font-size:0.8rem;" onclick="return confirm('Delete?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

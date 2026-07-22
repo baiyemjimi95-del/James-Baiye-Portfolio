@@ -1,0 +1,28 @@
+﻿{% extends "admin/layout.html" %}
+
+{% block page_title %}Blog{% endblock %}
+
+{% block content %}
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+    <h2 style="margin:0;">Manage Blog Posts</h2>
+    <a href="/admin/blog/add" class="btn"><i class="fas fa-plus"></i> New Post</a>
+</div>
+<div class="card">
+    <table class="table">
+        <thead><tr><th>Title</th><th>Status</th><th>Date</th><th style="text-align:right;">Actions</th></tr></thead>
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <td><strong>{{ post.title }}</strong></td>
+                <td>{% if post.published %}<span class="badge badge-success">Published</span>{% else %}<span class="badge badge-warning">Draft</span>{% endif %}</td>
+                <td>{{ post.created_at.strftime('%Y-%m-%d') }}</td>
+                <td style="text-align:right;">
+                    <a href="/admin/blog/edit/{{ post.id }}" class="btn btn-outline" style="padding:4px 12px; font-size:0.8rem;">Edit</a>
+                    <a href="/admin/blog/delete/{{ post.id }}" class="btn btn-danger" style="padding:4px 12px; font-size:0.8rem;" onclick="return confirm('Delete?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

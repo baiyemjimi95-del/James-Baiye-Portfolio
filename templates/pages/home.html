@@ -1,0 +1,195 @@
+﻿{% extends "layouts/base.html" %}
+
+{% block title %}James Baiye - Software Developer{% endblock %}
+
+{% block content %}
+<!-- ===== HERO SECTION ===== -->
+<section class="hero-section">
+    <div class="hero-content">
+        <div class="hero-text">
+            <span class="hero-greeting">👋 Hello, I'm</span>
+            <h1 class="hero-name">James <span class="highlight">Baiye</span></h1>
+            <div class="hero-typing">
+                <span class="typing-text"></span>
+                <span class="typing-cursor">|</span>
+            </div>
+            <p class="hero-description">
+                I build modern web applications, analyze data, and create intelligent solutions 
+                that help businesses grow and make better decisions.
+            </p>
+            <div class="hero-buttons">
+                <a href="/contact" class="btn-primary">
+                    <i class="fas fa-paper-plane"></i> Hire Me
+                </a>
+                <a href="/portfolio" class="btn-secondary">
+                    <i class="fas fa-eye"></i> View Work
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-count="15">0</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="3">0</span>
+                    <span class="stat-label">Years</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="10">0</span>
+                    <span class="stat-label">Technologies</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="profile-wrapper">
+                <div class="profile-circle">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="floating-tag tag-1">Python</div>
+                <div class="floating-tag tag-2">Flask</div>
+                <div class="floating-tag tag-3">SQL</div>
+                <div class="floating-tag tag-4">AI</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STATS SECTION ===== -->
+<section class="stats-section">
+    <div class="stats-grid">
+        <div class="stat-card">
+            <i class="fas fa-code"></i>
+            <span class="stat-number" data-count="20">0</span>
+            <span class="stat-label">Projects Completed</span>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-users"></i>
+            <span class="stat-number" data-count="15">0</span>
+            <span class="stat-label">Happy Clients</span>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-award"></i>
+            <span class="stat-number" data-count="5">0</span>
+            <span class="stat-label">Awards</span>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-clock"></i>
+            <span class="stat-number" data-count="1000">0</span>
+            <span class="stat-label">Hours Worked</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SKILLS SECTION ===== -->
+<section class="skills-section">
+    <h2 class="section-title">My <span class="highlight">Skills</span></h2>
+    <p class="section-subtitle">Technologies I work with</p>
+    
+    <div class="skills-grid">
+        {% for skill in skills %}
+        <div class="skill-item">
+            <div class="skill-header">
+                <span>{{ skill.name }}</span>
+                <span>{{ skill.percentage }}%</span>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-fill" data-width="{{ skill.percentage }}"></div>
+            </div>
+        </div>
+        {% else %}
+        <div class="skill-item">
+            <div class="skill-header"><span>Python</span><span>95%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-header"><span>Flask</span><span>90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-header"><span>SQL</span><span>92%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-header"><span>Power BI</span><span>85%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-header"><span>Machine Learning</span><span>80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-header"><span>JavaScript</span><span>75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- ===== PORTFOLIO SECTION ===== -->
+<section class="portfolio-section">
+    <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
+    <p class="section-subtitle">Some of my best work</p>
+    
+    <div class="portfolio-grid">
+        {% for project in projects %}
+        <div class="portfolio-card">
+            <div class="portfolio-image">
+                <i class="fas fa-{% if loop.index == 1 %}building{% else %}chart-line{% endif %}"></i>
+            </div>
+            <div class="portfolio-content">
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.description[:120] }}{% if project.description|length > 120 %}...{% endif %}</p>
+                <div class="portfolio-tags">
+                    {% for tech in project.technologies.split(',')[:3] %}
+                    <span>{{ tech.strip() }}</span>
+                    {% endfor %}
+                </div>
+                <a href="/portfolio" class="btn-secondary btn-small">View Project →</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="portfolio-card">
+            <div class="portfolio-image"><i class="fas fa-building"></i></div>
+            <div class="portfolio-content">
+                <h3>Chronos HR System</h3>
+                <p>Enterprise HR management platform with performance tracking.</p>
+                <div class="portfolio-tags"><span>Flask</span><span>SQL</span><span>Python</span></div>
+                <a href="/portfolio" class="btn-secondary btn-small">View Project →</a>
+            </div>
+        </div>
+        <div class="portfolio-card">
+            <div class="portfolio-image"><i class="fas fa-chart-line"></i></div>
+            <div class="portfolio-content">
+                <h3>Financial Dashboard</h3>
+                <p>Power BI dashboard for financial analytics and reporting.</p>
+                <div class="portfolio-tags"><span>Power BI</span><span>SQL</span></div>
+                <a href="/portfolio" class="btn-secondary btn-small">View Project →</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials-section">
+    <h2 class="section-title">What Clients <span class="highlight">Say</span></h2>
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>"James delivered the HR system ahead of schedule with excellent quality."</blockquote>
+            <div class="testimonial-author">
+                <strong>John Mwangi</strong>
+                <span>CTO, Tech Solutions Ltd</span>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>"Excellent communication and amazing work. Highly recommend!"</blockquote>
+            <div class="testimonial-author">
+                <strong>Sarah Kariuki</strong>
+                <span>Data Analyst, FinCorp</span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
