@@ -1,0 +1,44 @@
+<!-- templates/layout/footer.html -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>James Baiye</h3>
+                <p>Software Developer | Data Analyst | AI Developer</p>
+                <p>Building modern software solutions that drive business growth.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                    <li><a href="{{ url_for('main.about') }}">About</a></li>
+                    <li><a href="{{ url_for('main.portfolio') }}">Portfolio</a></li>
+                    <li><a href="{{ url_for('main.services_page') }}">Services</a></li>
+                    <li><a href="{{ url_for('main.blog') }}">Blog</a></li>
+                    <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p><i class="fas fa-envelope"></i> james@example.com</p>
+                <p><i class="fas fa-phone"></i> +254 700 000 000</p>
+                <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+            </div>
+        </div>
+        
+        <div class="social-links">
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="Upwork"><i class="fab fa-upwork"></i></a>
+            <a href="#" aria-label="Fiverr"><i class="fab fa-fiverr"></i></a>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; {{ current_year }} James Baiye. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
