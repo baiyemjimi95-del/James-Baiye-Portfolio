@@ -1,0 +1,48 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Database
+*.sqlite3
+*.db
+instance/
+
+# Environment variables
+.env
+.flaskenv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Uploads
+static/uploads/*
+!static/uploads/.gitkeep
+static/images/profile/*
+!static/images/profile/.gitkeep
+static/images/projects/*
+!static/images/projects/.gitkeep
+static/images/blog/*
+!static/images/blog/.gitkeep
+
+# Migrations
+migrations/versions/*.py
+!migrations/versions/__init__.py

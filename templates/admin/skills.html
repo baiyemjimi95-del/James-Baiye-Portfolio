@@ -1,0 +1,51 @@
+﻿{% extends "admin/layout.html" %}
+
+{% block page_title %}Skills{% endblock %}
+
+{% block content %}
+<h2 style="margin-bottom:20px;">Manage Skills</h2>
+
+<div class="card">
+    <h3>Add New Skill</h3>
+    <form method="POST" action="/admin/skills/add" style="display:grid; grid-template-columns:2fr 1fr 1fr auto; gap:12px; align-items:end;">
+        <div>
+            <label>Skill Name</label>
+            <input type="text" name="name" required>
+        </div>
+        <div>
+            <label>Percentage</label>
+            <input type="number" name="percentage" min="1" max="100" value="80" required>
+        </div>
+        <div>
+            <label>Category</label>
+            <input type="text" name="category" value="Technical">
+        </div>
+        <button type="submit" class="btn">Add</button>
+    </form>
+</div>
+
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr><th>Skill</th><th>%</th><th>Category</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+            {% for skill in skills %}
+            <tr>
+                <td><strong>{{ skill.name }}</strong></td>
+                <td>{{ skill.percentage }}%</td>
+                <td>{{ skill.category }}</td>
+                <td>
+                    <form method="POST" action="/admin/skills/edit/{{ skill.id }}" style="display:inline;">
+                        <input type="text" name="name" value="{{ skill.name }}" style="width:100px; padding:4px 8px; border:1px solid #e2e8f0; border-radius:4px;">
+                        <input type="number" name="percentage" value="{{ skill.percentage }}" style="width:60px; padding:4px 8px; border:1px solid #e2e8f0; border-radius:4px;">
+                        <button type="submit" class="btn btn-outline" style="padding:4px 12px; font-size:0.8rem;">Update</button>
+                    </form>
+                    <a href="/admin/skills/delete/{{ skill.id }}" class="btn btn-danger" style="padding:4px 12px; font-size:0.8rem;" onclick="return confirm('Delete this skill?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

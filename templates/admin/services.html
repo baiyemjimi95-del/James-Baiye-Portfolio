@@ -1,0 +1,47 @@
+﻿{% extends "admin/layout.html" %}
+
+{% block page_title %}Services{% endblock %}
+
+{% block content %}
+<h2 style="margin-bottom:20px;">Manage Services</h2>
+
+<div class="card">
+    <h3>Add New Service</h3>
+    <form method="POST" action="/admin/services/add" style="display:grid; grid-template-columns:1fr 1fr auto; gap:12px; align-items:end;">
+        <div>
+            <label>Service Name</label>
+            <input type="text" name="name" required>
+        </div>
+        <div>
+            <label>Icon (Font Awesome class)</label>
+            <input type="text" name="icon" value="fa-code">
+        </div>
+        <button type="submit" class="btn">Add</button>
+    </form>
+</div>
+
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr><th>Name</th><th>Icon</th><th>Description</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+            {% for service in services %}
+            <tr>
+                <td><strong>{{ service.name }}</strong></td>
+                <td><i class="fas {{ service.icon }}"></i> {{ service.icon }}</td>
+                <td>{{ service.description[:50] if service.description else '-' }}</td>
+                <td>
+                    <form method="POST" action="/admin/services/edit/{{ service.id }}" style="display:inline;">
+                        <input type="text" name="name" value="{{ service.name }}" style="width:100px; padding:4px 8px; border:1px solid #e2e8f0; border-radius:4px;">
+                        <input type="text" name="icon" value="{{ service.icon }}" style="width:80px; padding:4px 8px; border:1px solid #e2e8f0; border-radius:4px;">
+                        <button type="submit" class="btn btn-outline" style="padding:4px 12px; font-size:0.8rem;">Update</button>
+                    </form>
+                    <a href="/admin/services/delete/{{ service.id }}" class="btn btn-danger" style="padding:4px 12px; font-size:0.8rem;" onclick="return confirm('Delete this service?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

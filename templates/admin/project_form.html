@@ -1,0 +1,63 @@
+﻿{% extends "admin/layout.html" %}
+
+{% block page_title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>{{ title }}</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" name="title" value="{{ project.title if project else '' }}" required>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" required>{{ project.description if project else '' }}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Technologies (comma separated)</label>
+            <input type="text" name="technologies" value="{{ project.technologies if project else '' }}" placeholder="Flask, SQL, Python">
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>GitHub URL</label>
+                <input type="text" name="github_url" value="{{ project.github_url if project else '' }}">
+            </div>
+            <div class="form-group">
+                <label>Live Demo URL</label>
+                <input type="text" name="live_url" value="{{ project.live_url if project else '' }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <select name="category">
+                <option value="Web" {% if project and project.category == 'Web' %}selected{% endif %}>Web</option>
+                <option value="Data" {% if project and project.category == 'Data' %}selected{% endif %}>Data</option>
+                <option value="AI" {% if project and project.category == 'AI' %}selected{% endif %}>AI</option>
+                <option value="Mobile" {% if project and project.category == 'Mobile' %}selected{% endif %}>Mobile</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Project Image</label>
+            <input type="file" name="image" accept="image/*">
+            {% if project and project.image %}
+            <p style="color:#64748b; font-size:0.9rem; margin-top:4px;">Current: {{ project.image }}</p>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label>
+                <input type="checkbox" name="is_featured" {% if project and project.is_featured %}checked{% endif %}> 
+                Feature this project
+            </label>
+        </div>
+        <div class="form-group">
+            <label>
+                <input type="checkbox" name="is_published" {% if not project or project.is_published %}checked{% endif %}> 
+                Publish this project
+            </label>
+        </div>
+        <button type="submit" class="btn">Save Project</button>
+        <a href="/admin/projects" class="btn btn-outline">Cancel</a>
+    </form>
+</div>
+{% endblock %}

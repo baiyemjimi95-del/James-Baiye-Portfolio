@@ -1,0 +1,60 @@
+﻿{% extends "layouts/base.html" %}
+
+{% block title %}Projects - James Baiye{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h2 class="section-title text-center">My <span class="highlight">Projects</span></h2>
+        <p class="section-subtitle">Some of my best work</p>
+        
+        <div class="projects-grid">
+            {% for project in projects %}
+            <div class="project-card glass-card">
+                <div class="card-image">
+                    <i class="fas fa-{% if loop.index == 1 %}building{% else %}chart-line{% endif %}"></i>
+                </div>
+                <div class="card-content">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description[:120] }}{% if project.description|length > 120 %}...{% endif %}</p>
+                    <div class="project-tags">
+                        {% for tech in project.technologies.split(',')[:3] %}
+                        <span>{{ tech.strip() }}</span>
+                        {% endfor %}
+                    </div>
+                    <a href="/project/{{ project.get_slug() }}" class="btn-secondary btn-small">View Project →</a>
+                </div>
+            </div>
+            {% else %}
+            <div class="project-card glass-card">
+                <div class="card-image"><i class="fas fa-building"></i></div>
+                <div class="card-content">
+                    <h3>Chronos HR System</h3>
+                    <p>Enterprise HR management platform with performance tracking.</p>
+                    <div class="project-tags"><span>Flask</span><span>SQL</span><span>Python</span></div>
+                    <a href="#" class="btn-secondary btn-small">View Project →</a>
+                </div>
+            </div>
+            <div class="project-card glass-card">
+                <div class="card-image"><i class="fas fa-chart-line"></i></div>
+                <div class="card-content">
+                    <h3>Financial Dashboard</h3>
+                    <p>Power BI dashboard for financial analytics and reporting.</p>
+                    <div class="project-tags"><span>Power BI</span><span>SQL</span></div>
+                    <a href="#" class="btn-secondary btn-small">View Project →</a>
+                </div>
+            </div>
+            <div class="project-card glass-card">
+                <div class="card-image"><i class="fas fa-robot"></i></div>
+                <div class="card-content">
+                    <h3>Data Automation Pipeline</h3>
+                    <p>Python automation for data cleaning and analysis.</p>
+                    <div class="project-tags"><span>Python</span><span>Pandas</span></div>
+                    <a href="#" class="btn-secondary btn-small">View Project →</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

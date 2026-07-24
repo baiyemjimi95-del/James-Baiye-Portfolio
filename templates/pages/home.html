@@ -1,0 +1,376 @@
+﻿{% extends "layouts/base.html" %}
+
+{% block title %}James Baiye - Software Engineer | Data Scientist{% endblock %}
+
+{% block content %}
+<!-- ===== HERO SECTION ===== -->
+<section class="hero" id="home">
+    <!-- Animated Background -->
+    <div class="hero-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+    </div>
+    <div class="hero-grid-overlay"></div>
+
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="greeting">✨ Welcome to my portfolio</span>
+                <h1>
+                    Hi, I'm <span class="highlight">James Baiye</span>
+                </h1>
+                <div class="hero-typing">
+                    <span class="typing-text"></span>
+                    <span class="typing-cursor">|</span>
+                </div>
+                <p class="hero-subtitle">
+                    Software Engineer • Data Scientist • Machine Learning Enthusiast • Political Scientist
+                </p>
+                <p class="tagline">
+                    I began my programming journey in 2026 and quickly discovered a passion for building software 
+                    that solves meaningful problems. Since then, I've developed web applications, HR systems, 
+                    data analytics dashboards, machine learning projects, and business solutions while continuously 
+                    learning new technologies. My background in political science gives me a unique perspective on 
+                    understanding people, systems, and decision-making, allowing me to create software that is 
+                    both technically sound and user-focused.
+                </p>
+                
+                <!-- Tech Badges -->
+                <div class="tech-badges">
+                    <span class="badge">🐍 Python</span>
+                    <span class="badge">⚡ Flask</span>
+                    <span class="badge">📊 SQL</span>
+                    <span class="badge">🤖 ML</span>
+                    <span class="badge">☁ Git</span>
+                    <span class="badge">🐧 Linux</span>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="/projects" class="btn-primary">
+                        <i class="fas fa-rocket"></i> Explore My Work
+                    </a>
+                    <a href="/contact" class="btn-secondary">
+                        <i class="fas fa-envelope"></i> Hire Me
+                    </a>
+                    <a href="/static/documents/Resume.pdf" class="btn-secondary">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                    <a href="https://github.com/baiyemjimi95-del" target="_blank" class="btn-secondary">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" data-count="20">0</span>
+                        <span class="stat-label">Projects Built</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="2026">0</span>
+                        <span class="stat-label">Journey Began</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="12">0</span>
+                        <span class="stat-label">Technologies Learned</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="1000">0</span>
+                        <span class="stat-label">Hours Learning</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="hero-avatar">
+                    <!-- Premium Animated SVG Avatar -->
+                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Glow -->
+                        <circle cx="200" cy="200" r="180" fill="url(#avatarGlow)" opacity="0.3">
+                            <animate attributeName="r" values="170;190;170" dur="3s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.3;0.5;0.3" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                        
+                        <defs>
+                            <radialGradient id="avatarGlow">
+                                <stop offset="0%" stop-color="#2563EB"/>
+                                <stop offset="100%" stop-color="#7C3AED"/>
+                            </radialGradient>
+                            <radialGradient id="skinGrad" cx="45%" cy="35%">
+                                <stop offset="0%" stop-color="#A67B5B"/>
+                                <stop offset="100%" stop-color="#6D4C2A"/>
+                            </radialGradient>
+                            <radialGradient id="hairGrad" cx="50%" cy="30%">
+                                <stop offset="0%" stop-color="#2C1810"/>
+                                <stop offset="100%" stop-color="#1A0E08"/>
+                            </radialGradient>
+                        </defs>
+
+                        <!-- Afro Hair -->
+                        <ellipse cx="200" cy="140" rx="95" ry="85" fill="url(#hairGrad)"/>
+                        <circle cx="140" cy="110" r="18" fill="#2C1810"/>
+                        <circle cx="170" cy="90" r="20" fill="#3D2317"/>
+                        <circle cx="200" cy="85" r="22" fill="#2C1810"/>
+                        <circle cx="230" cy="90" r="20" fill="#3D2317"/>
+                        <circle cx="260" cy="110" r="18" fill="#2C1810"/>
+
+                        <!-- Face -->
+                        <ellipse cx="200" cy="200" rx="80" ry="95" fill="url(#skinGrad)"/>
+
+                        <!-- Glasses -->
+                        <ellipse cx="165" cy="195" rx="38" ry="28" fill="none" stroke="#60A5FA" stroke-width="3" opacity="0.6"/>
+                        <ellipse cx="235" cy="195" rx="38" ry="28" fill="none" stroke="#60A5FA" stroke-width="3" opacity="0.6"/>
+                        <line x1="203" y1="195" x2="197" y2="195" stroke="#60A5FA" stroke-width="3" opacity="0.6"/>
+                        <line x1="127" y1="195" x2="110" y2="190" stroke="#60A5FA" stroke-width="3" opacity="0.6"/>
+                        <line x1="273" y1="195" x2="290" y2="190" stroke="#60A5FA" stroke-width="3" opacity="0.6"/>
+
+                        <!-- Eyes -->
+                        <ellipse cx="165" cy="195" rx="16" ry="12" fill="white" opacity="0.3"/>
+                        <ellipse cx="235" cy="195" rx="16" ry="12" fill="white" opacity="0.3"/>
+                        <circle cx="165" cy="195" r="6" fill="#1A0E08"/>
+                        <circle cx="235" cy="195" r="6" fill="#1A0E08"/>
+
+                        <!-- Smile -->
+                        <path d="M 175 225 Q 200 245 225 225" stroke="#3D2317" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+                        <!-- Blue Hoodie -->
+                        <path d="M 120 250 L 120 310 Q 200 340 280 310 L 280 250 Q 200 230 120 250 Z" fill="#1E3A5F"/>
+                        <path d="M 120 250 Q 200 230 280 250 L 280 260 Q 200 240 120 260 Z" fill="#0F172A"/>
+                        <line x1="185" y1="250" x2="180" y2="275" stroke="#334155" stroke-width="2"/>
+                        <line x1="215" y1="250" x2="220" y2="275" stroke="#334155" stroke-width="2"/>
+
+                        <!-- Laptop -->
+                        <rect x="140" y="305" width="120" height="80" rx="8" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+                        <rect x="148" y="312" width="104" height="66" rx="4" fill="#0F172A"/>
+                        <!-- Animated code lines -->
+                        <line x1="160" y1="325" x2="240" y2="325" stroke="#2563EB" stroke-width="2" opacity="0.8">
+                            <animate attributeName="x1" values="160;180;160" dur="3s" repeatCount="indefinite"/>
+                            <animate attributeName="x2" values="240;220;240" dur="3s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="160" y1="335" x2="220" y2="335" stroke="#7C3AED" stroke-width="2" opacity="0.6">
+                            <animate attributeName="x1" values="160;170;160" dur="4s" repeatCount="indefinite"/>
+                            <animate attributeName="x2" values="220;210;220" dur="4s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="160" y1="345" x2="200" y2="345" stroke="#06B6D4" stroke-width="2" opacity="0.4">
+                            <animate attributeName="x1" values="160;190;160" dur="5s" repeatCount="indefinite"/>
+                            <animate attributeName="x2" values="200;170;200" dur="5s" repeatCount="indefinite"/>
+                        </line>
+
+                        <!-- Coffee Mug -->
+                        <rect x="40" y="320" width="30" height="40" rx="4" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+                        <rect x="45" y="325" width="20" height="30" rx="2" fill="#0F172A"/>
+                        <path d="M 43 330 Q 35 340 43 350" stroke="#334155" stroke-width="2" fill="none"/>
+                        <path d="M 50 320 Q 55 310 50 300" stroke="#94A3B8" stroke-width="2" opacity="0.5">
+                            <animate attributeName="d" values="M 50 320 Q 55 310 50 300;M 55 320 Q 60 310 55 300;M 50 320 Q 55 310 50 300" dur="2s" repeatCount="indefinite"/>
+                        </path>
+                    </svg>
+
+                    <!-- Floating Tags -->
+                    <span class="floating-tag tag-1">🐍 Python</span>
+                    <span class="floating-tag tag-2">⚡ Flask</span>
+                    <span class="floating-tag tag-3">📊 SQL</span>
+                    <span class="floating-tag tag-4">🤖 AI</span>
+                    <span class="floating-tag tag-5">☁ Git</span>
+                    <span class="floating-tag tag-6">📈 Power BI</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STATS SECTION ===== -->
+<section class="stats-section reveal">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card glass-card">
+                <i class="fas fa-code"></i>
+                <span class="stat-number" data-count="20">0</span>
+                <span class="stat-label">Projects Completed</span>
+            </div>
+            <div class="stat-card glass-card">
+                <i class="fas fa-users"></i>
+                <span class="stat-number" data-count="15">0</span>
+                <span class="stat-label">Happy Clients</span>
+            </div>
+            <div class="stat-card glass-card">
+                <i class="fas fa-award"></i>
+                <span class="stat-number" data-count="5">0</span>
+                <span class="stat-label">Awards</span>
+            </div>
+            <div class="stat-card glass-card">
+                <i class="fas fa-clock"></i>
+                <span class="stat-number" data-count="1000">0</span>
+                <span class="stat-label">Hours Learned</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CODING JOURNEY SECTION ===== -->
+<section class="journey-section reveal">
+    <div class="container">
+        <h2 class="section-title text-center">My <span class="highlight">Coding Journey</span></h2>
+        <p class="section-subtitle">From curiosity to creation</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="date">Jan 2026</span>
+                <h4>Started Programming</h4>
+                <p>Discovered Python and fell in love with coding. Built my first calculator app.</p>
+            </div>
+            <div class="timeline-item">
+                <span class="date">Mar 2026</span>
+                <h4>Flask Framework</h4>
+                <p>Built first web applications with Flask. Created a salary calculator tool.</p>
+            </div>
+            <div class="timeline-item">
+                <span class="date">Jun 2026</span>
+                <h4>Chronos HR System</h4>
+                <p>Built an enterprise HR management platform with performance tracking.</p>
+            </div>
+            <div class="timeline-item">
+                <span class="date">Jul 2026</span>
+                <h4>SQL & Power BI</h4>
+                <p>Mastered data analytics and visualization. Built financial dashboards.</p>
+            </div>
+            <div class="timeline-item">
+                <span class="date">Aug 2026</span>
+                <h4>Machine Learning</h4>
+                <p>Started building ML models and AI solutions for real-world problems.</p>
+            </div>
+            <div class="timeline-item">
+                <span class="date">Today</span>
+                <h4>Building the Future</h4>
+                <p>Continuously learning and building intelligent, full-stack applications.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SKILLS SECTION ===== -->
+<section class="skills-section reveal">
+    <div class="container">
+        <h2 class="section-title text-center">My <span class="highlight">Skills</span></h2>
+        <p class="section-subtitle">Technologies I work with</p>
+        
+        <div class="skills-grid">
+            <div class="skill-item glass-card">
+                <div class="skill-header">
+                    <span>🐍 Python</span>
+                    <span>95%</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+            </div>
+            <div class="skill-item glass-card">
+                <div class="skill-header">
+                    <span>⚡ Flask</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-item glass-card">
+                <div class="skill-header">
+                    <span>📊 SQL</span>
+                    <span>92%</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+            </div>
+            <div class="skill-item glass-card">
+                <div class="skill-header">
+                    <span>📈 Power BI</span>
+                    <span>85%</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-item glass-card">
+                <div class="skill-header">
+                    <span>🤖 Machine Learning</span>
+                    <span>80%</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-item glass-card">
+                <div class="skill-header">
+                    <span>☁ Git & Linux</span>
+                    <span>75%</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PROJECTS SECTION ===== -->
+<section class="projects-section reveal">
+    <div class="container">
+        <h2 class="section-title text-center">Featured <span class="highlight">Projects</span></h2>
+        <p class="section-subtitle">Some of my best work</p>
+        
+        <div class="projects-grid">
+            <div class="project-card glass-card">
+                <div class="card-image"><i class="fas fa-building"></i></div>
+                <div class="card-content">
+                    <h3>Chronos HR System</h3>
+                    <p>Enterprise HR management platform with performance tracking, KPI management, and reporting.</p>
+                    <div class="project-tags">
+                        <span>Flask</span>
+                        <span>SQL</span>
+                        <span>Python</span>
+                    </div>
+                    <a href="#" class="btn-secondary btn-small">View Project →</a>
+                </div>
+            </div>
+            <div class="project-card glass-card">
+                <div class="card-image"><i class="fas fa-chart-line"></i></div>
+                <div class="card-content">
+                    <h3>Financial Intelligence Dashboard</h3>
+                    <p>Power BI dashboard for financial analytics, KPI tracking, and executive reporting.</p>
+                    <div class="project-tags">
+                        <span>Power BI</span>
+                        <span>SQL</span>
+                    </div>
+                    <a href="#" class="btn-secondary btn-small">View Project →</a>
+                </div>
+            </div>
+            <div class="project-card glass-card">
+                <div class="card-image"><i class="fas fa-robot"></i></div>
+                <div class="card-content">
+                    <h3>Data Automation Pipeline</h3>
+                    <p>Python script for automated data cleaning, transformation, and analysis.</p>
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>Pandas</span>
+                    </div>
+                    <a href="#" class="btn-secondary btn-small">View Project →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials-section reveal">
+    <div class="container">
+        <h2 class="section-title text-center">What People <span class="highlight">Say</span></h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card glass-card">
+                <div class="stars">★★★★★</div>
+                <blockquote>"James delivered the HR system ahead of schedule with excellent quality. His attention to detail and problem-solving skills are impressive."</blockquote>
+                <div class="testimonial-author">
+                    <strong>John Mwangi</strong>
+                    <span>CTO, Tech Solutions Ltd</span>
+                </div>
+            </div>
+            <div class="testimonial-card glass-card">
+                <div class="stars">★★★★★</div>
+                <blockquote>"Excellent communication and amazing work. James is a talented developer who truly cares about delivering value to his clients."</blockquote>
+                <div class="testimonial-author">
+                    <strong>Sarah Kariuki</strong>
+                    <span>Data Analyst, FinCorp</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

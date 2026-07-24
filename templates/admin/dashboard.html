@@ -1,0 +1,59 @@
+﻿{% extends "admin/layout.html" %}
+
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>{{ stats.projects }}</h3>
+        <p>Projects</p>
+    </div>
+    <div class="stat-card">
+        <h3>{{ stats.blogs }}</h3>
+        <p>Blog Posts</p>
+    </div>
+    <div class="stat-card">
+        <h3>{{ stats.skills }}</h3>
+        <p>Skills</p>
+    </div>
+    <div class="stat-card">
+        <h3>{{ stats.services }}</h3>
+        <p>Services</p>
+    </div>
+    <div class="stat-card">
+        <h3>{{ stats.messages }}</h3>
+        <p>New Messages</p>
+    </div>
+</div>
+
+<div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:24px;">
+    <a href="/admin/projects/add" class="btn"><i class="fas fa-plus"></i> Add Project</a>
+    <a href="/admin/blog/add" class="btn"><i class="fas fa-plus"></i> New Blog Post</a>
+    <a href="/admin/skills" class="btn btn-outline"><i class="fas fa-plus"></i> Manage Skills</a>
+</div>
+
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+    <div class="card">
+        <h3 style="margin-bottom:16px;">Recent Messages</h3>
+        {% for msg in recent_messages %}
+        <div style="padding:8px 0; border-bottom:1px solid #f1f5f9;">
+            <strong>{{ msg.name }}</strong> - {{ msg.subject or 'No subject' }}
+            <span style="color:#64748b; font-size:0.8rem; float:right;">{{ msg.created_at.strftime('%Y-%m-%d') }}</span>
+        </div>
+        {% else %}
+        <p style="color:#94a3b8;">No messages yet.</p>
+        {% endfor %}
+    </div>
+    <div class="card">
+        <h3 style="margin-bottom:16px;">Recent Projects</h3>
+        {% for p in recent_projects %}
+        <div style="padding:8px 0; border-bottom:1px solid #f1f5f9;">
+            <strong>{{ p.title }}</strong>
+            <span style="color:#64748b; font-size:0.8rem; float:right;">{{ p.created_at.strftime('%Y-%m-%d') }}</span>
+        </div>
+        {% else %}
+        <p style="color:#94a3b8;">No projects yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

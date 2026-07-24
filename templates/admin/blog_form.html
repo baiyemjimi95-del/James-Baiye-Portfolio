@@ -1,0 +1,42 @@
+﻿{% extends "admin/layout.html" %}
+
+{% block page_title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>{{ title }}</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" name="title" value="{{ post.title if post else '' }}" required>
+        </div>
+        <div class="form-group">
+            <label>Excerpt (optional)</label>
+            <input type="text" name="excerpt" value="{{ post.excerpt if post else '' }}">
+        </div>
+        <div class="form-group">
+            <label>Content</label>
+            <textarea name="content" required>{{ post.content if post else '' }}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Tags (comma separated)</label>
+            <input type="text" name="tags" value="{{ post.tags if post else '' }}" placeholder="Flask, Python, Web">
+        </div>
+        <div class="form-group">
+            <label>Featured Image</label>
+            <input type="file" name="image" accept="image/*">
+            {% if post and post.image %}
+            <p style="color:#64748b; font-size:0.9rem; margin-top:4px;">Current: {{ post.image }}</p>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label>
+                <input type="checkbox" name="is_published" {% if post and post.is_published %}checked{% endif %}> 
+                Publish this post
+            </label>
+        </div>
+        <button type="submit" class="btn">Save Post</button>
+        <a href="/admin/blog" class="btn btn-outline">Cancel</a>
+    </form>
+</div>
+{% endblock %}

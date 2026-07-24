@@ -1,0 +1,29 @@
+﻿{% extends "admin/layout.html" %}
+
+{% block page_title %}Messages{% endblock %}
+
+{% block content %}
+<h2 style="margin-bottom:20px;">Contact Messages</h2>
+
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr><th>From</th><th>Subject</th><th>Date</th><th>Status</th><th style="text-align:right;">Actions</th></tr>
+        </thead>
+        <tbody>
+            {% for msg in messages %}
+            <tr>
+                <td><strong>{{ msg.name }}</strong><br><small style="color:#64748b;">{{ msg.email }}</small></td>
+                <td>{{ msg.subject or 'No subject' }}</td>
+                <td>{{ msg.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                <td>{% if msg.is_read %}<span class="badge badge-success">Read</span>{% else %}<span class="badge badge-warning">New</span>{% endif %}</td>
+                <td style="text-align:right;">
+                    <a href="/admin/messages/read/{{ msg.id }}" class="btn btn-outline" style="padding:4px 12px; font-size:0.8rem;">Mark Read</a>
+                    <a href="/admin/messages/delete/{{ msg.id }}" class="btn btn-danger" style="padding:4px 12px; font-size:0.8rem;" onclick="return confirm('Delete this message?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

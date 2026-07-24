@@ -1,0 +1,38 @@
+﻿{% extends "layouts/base.html" %}
+
+{% block title %}About - James Baiye{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h2 class="section-title text-center">About <span class="highlight">Me</span></h2>
+        <p class="section-subtitle">From curiosity to creation</p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1000px; margin: 0 auto;">
+            <div>
+                <div style="width: 100%; height: 400px; background: var(--gradient-primary); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 8rem; color: white; box-shadow: 0 20px 60px rgba(37, 99, 235, 0.3);">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+            <div>
+                <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 16px;">
+                    Hello, I'm <span class="highlight">James Baiye</span>
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 16px;">
+                    I build modern software that helps businesses automate their work, analyze data, and improve decision making.
+                </p>
+                <p style="color: var(--text-secondary); margin-bottom: 16px;">
+                    I specialize in Python development, custom software, web applications, Power BI dashboards, SQL databases, machine learning, and automation.
+                </p>
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                    Every project is built with clean code, excellent documentation, and scalability in mind.
+                </p>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                    <a href="/static/documents/Resume.pdf" class="btn-primary"><i class="fas fa-download"></i> Download CV</a>
+                    <a href="/contact" class="btn-secondary"><i class="fas fa-envelope"></i> Hire Me</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

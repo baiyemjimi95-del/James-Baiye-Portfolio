@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - {% block title %}Dashboard{% endblock %}</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; background:#f1f5f9; color:#0f172a; }
+        
+        .admin-container { display:flex; min-height:100vh; }
+        
+        /* Sidebar */
+        .sidebar {
+            width:260px;
+            background:#0f172a;
+            color:white;
+            padding:24px;
+            position:fixed;
+            top:0;
+            left:0;
+            bottom:0;
+            overflow-y:auto;
+        }
+        
+        .sidebar h2 {
+            font-size:1.2rem;
+            font-weight:800;
+            margin-bottom:24px;
+        }
+        
+        .sidebar h2 span { color:#3b82f6; }
+        
+        .sidebar a {
+            display:flex;
+            align-items:center;
+            gap:12px;
+            color:rgba(255,255,255,0.7);
+            padding:10px 14px;
+            border-radius:8px;
+            text-decoration:none;
+            margin-bottom:2px;
+            transition:0.3s;
+        }
+        
+        .sidebar a:hover,
+        .sidebar a.active {
+            background:rgba(255,255,255,0.1);
+            color:white;
+        }
+        
+        .sidebar a i { width:20px; text-align:center; }
+        
+        .sidebar hr {
+            border-color:rgba(255,255,255,0.1);
+            margin:16px 0;
+        }
+        
+        /* Main Content */
+        .main {
+            flex:1;
+            margin-left:260px;
+            padding:32px 40px;
+            min-height:100vh;
+        }
+        
+        .topbar {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:32px;
+        }
+        
+        .topbar h1 { font-size:1.5rem; font-weight:700; }
+        
+        /* Buttons */
+        .btn {
+            display:inline-block;
+            padding:10px 20px;
+            background:#3b82f6;
+            color:white;
+            border:none;
+            border-radius:8px;
+            text-decoration:none;
+            cursor:pointer;
+            font-weight:500;
+            transition:0.3s;
+        }
+        
+        .btn:hover { background:#2563eb; }
+        .btn-danger { background:#ef4444; }
+        .btn-danger:hover { background:#dc2626; }
+        
+        .btn-outline {
+            background:transparent;
+            border:1px solid #e2e8f0;
+            color:#0f172a;
+        }
+        
+        .btn-outline:hover { background:#f1f5f9; }
+        
+        /* Cards */
+        .card {
+            background:white;
+            border-radius:12px;
+            border:1px solid #e2e8f0;
+            padding:24px;
+            margin-bottom:20px;
+            box-shadow:0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fill, minmax(180px,1fr));
+            gap:16px;
+            margin-bottom:24px;
+        }
+        
+        .stat-card {
+            background:white;
+            border-radius:12px;
+            border:1px solid #e2e8f0;
+            padding:20px;
+            text-align:center;
+        }
+        
+        .stat-card h3 {
+            font-size:2rem;
+            font-weight:800;
+            color:#3b82f6;
+        }
+        
+        .stat-card p { color:#64748b; font-size:0.9rem; }
+        
+        /* Tables */
+        .table { width:100%; border-collapse:collapse; }
+        .table th { text-align:left; padding:12px; background:#f1f5f9; font-weight:600; }
+        .table td { padding:12px; border-bottom:1px solid #e2e8f0; }
+        
+        /* Badges */
+        .badge {
+            display:inline-block;
+            padding:4px 12px;
+            border-radius:50px;
+            font-size:0.75rem;
+            font-weight:500;
+        }
+        
+        .badge-success { background:#dcfce7; color:#166534; }
+        .badge-warning { background:#fef9c3; color:#854d0e; }
+        
+        /* Forms */
+        .form-group { margin-bottom:16px; }
+        .form-group label { display:block; font-weight:500; margin-bottom:4px; }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width:100%;
+            padding:10px 12px;
+            border:1px solid #e2e8f0;
+            border-radius:8px;
+            font-family:inherit;
+            font-size:1rem;
+        }
+        
+        .form-group textarea { min-height:120px; resize:vertical; }
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+        
+        /* Flash Messages */
+        .flash {
+            padding:12px 16px;
+            border-radius:8px;
+            margin-bottom:16px;
+        }
+        
+        .flash-success { background:#dcfce7; color:#166534; }
+        .flash-danger { background:#fee2e2; color:#991b1b; }
+        .flash-info { background:#dbeafe; color:#1e40af; }
+        
+        /* Responsive */
+        @media(max-width:768px) {
+            .sidebar { display:none; }
+            .main { margin-left:0; padding:16px; }
+            .form-row { grid-template-columns:1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>James<span>Baiye</span></h2>
+            
+            <a href="/admin/" class="{% if request.path == '/admin/' %}active{% endif %}">
+                <i class="fas fa-chart-pie"></i> Dashboard
+            </a>
+            <a href="/admin/profile" class="{% if 'profile' in request.path %}active{% endif %}">
+                <i class="fas fa-user"></i> Profile
+            </a>
+            <a href="/admin/projects" class="{% if 'projects' in request.path %}active{% endif %}">
+                <i class="fas fa-briefcase"></i> Projects
+            </a>
+            <a href="/admin/blog" class="{% if 'blog' in request.path %}active{% endif %}">
+                <i class="fas fa-newspaper"></i> Blog
+            </a>
+            <a href="/admin/skills" class="{% if 'skills' in request.path %}active{% endif %}">
+                <i class="fas fa-code"></i> Skills
+            </a>
+            <a href="/admin/services" class="{% if 'services' in request.path %}active{% endif %}">
+                <i class="fas fa-cogs"></i> Services
+            </a>
+            <a href="/admin/messages" class="{% if 'messages' in request.path %}active{% endif %}">
+                <i class="fas fa-envelope"></i> Messages
+            </a>
+            
+            <hr>
+            
+            <a href="/admin/settings" class="{% if 'settings' in request.path %}active{% endif %}">
+                <i class="fas fa-sliders-h"></i> Settings
+            </a>
+            <a href="/admin/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main">
+            <div class="topbar">
+                <h1>{% block page_title %}Dashboard{% endblock %}</h1>
+                <div>
+                    <a href="/" target="_blank" style="color:#3b82f6; text-decoration:none;">
+                        <i class="fas fa-eye"></i> View Site
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="flash flash-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <!-- Content -->
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>
